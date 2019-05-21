@@ -1,24 +1,31 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, LayoutAnimation } from 'react-native';
 
 export default class StyleTransitionExample extends React.Component {
   state = {
     isActive: false,
   };
+
   render() {
+    LayoutAnimation.easeInEaseOut();
+
+    const { isActive } = this.state;
     return (
       <View style={styles.container}>
         <Text
           onPress={() => {
-            this.setState({ isActive: !this.state.isActive });
+            this.setState({ isActive: !isActive });
           }}
           style={[
             styles.text,
             styles.transtion,
-            { color: this.state.isActive ? 'blue' : 'orange' },
+            {
+              width: isActive ? '100%' : '30%',
+              height: isActive ? '100%' : '30%',
+            },
           ]}
         >
-          Click me bro
+          Transition
         </Text>
       </View>
     );
@@ -33,11 +40,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   text: {
+    backgroundColor: 'orange',
+    textAlign: 'center',
+    color: 'white',
     fontSize: 24,
   },
   transtion: {
     transitionDuration: '1s',
-    transitionProperty: 'color',
+    transitionProperty: 'all',
     transitionTimingFunction: 'ease-in-out',
   },
 });

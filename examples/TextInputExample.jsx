@@ -82,8 +82,8 @@ const styles = StyleSheet.create({
         resize: oneOf(['none', 'vertical', 'horizontal', 'both'])
        */
       web: {
-        caretColor: 'orange',
-        outlineColor: 'red',
+        // caretColor: 'orange',
+        // outlineColor: 'red',
       },
       default: {},
     }),
